@@ -30,6 +30,8 @@ option.add_argument('window-size=1920x1580')
 option.add_argument('--incognito')
 # 隐藏滚动条, 应对一些特殊页面
 option.add_argument('--hide-scrollbars')
+# 处理浏览器打开无标题的问题
+option.add_argument('--no-sandbox')
 option.add_experimental_option('useAutomationExtension', False)
 option.add_experimental_option('excludeSwitches', ['enable-automation'])
 driver = webdriver.Chrome(chrome_options=option)
