@@ -1,6 +1,8 @@
 from selenium import webdriver
 # 引入 ActionChains 类
 from selenium.webdriver.common.action_chains import ActionChains
+# 引入键盘操作 Keys 类
+from selenium.webdriver.common.keys import Keys
 import time
 
 # 滚动到浏览器顶部
@@ -63,10 +65,15 @@ element = driver.find_element_by_id("l-map")
 # 对定位到的元素执行鼠标点击操作
 ActionChains(driver).move_to_element(element).double_click()
 # 使用快捷方式执行地图缩小事件(+对应放大，-对应缩小)
+print("开始地图缩小")
 element.send_keys("-")
-print("开始地图缩放")
-time.sleep(10)
-print("地图缩放完毕")
+time.sleep(5)
+print("地图缩小完毕")
+print("开始地图放大")
+# 经过实际测试，采用+放大地图并不是一层一层放大，因此此处替换为通过键盘事件来处理
+element.send_keys(Keys.ADD)
+print("地图放大完毕")
+time.sleep(5)
 # 将登陆成功后的页面截图
 driver.get_screenshot_as_file(".\\image\\radar_index.png")
 # 退出驱动关闭所有窗口
